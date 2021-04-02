@@ -28,7 +28,7 @@ class Landing extends React.Component{
   }
 
   handleFinish() {
-    this.setState({ modalNum: 0 })
+    this.setState({ modalNum: 4 })
   }
 
   render(){
@@ -63,8 +63,9 @@ class Landing extends React.Component{
         }
 
         {
-          !this.state.modalNum &&
-          <BillImpact />
+          this.state.modalNum === 4 &&
+          <BillImpact 
+            handleBack={this.handleBack} />
         }
 
 

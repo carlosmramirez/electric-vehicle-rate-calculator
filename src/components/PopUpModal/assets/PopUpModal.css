@@ -7,7 +7,7 @@
   width: 50%;
   height: 50%;
   margin: auto;
-
+  box-shadow: lightgrey 0.15em 0.15em;
 }
 
 .popup-shadow {
