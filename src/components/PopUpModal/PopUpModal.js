@@ -6,7 +6,12 @@ class PopUpModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-  
+      title: props.title,
+      handleBack: props.handleBack,
+      handleForward: props.handleForward,
+      handleFinish: props.handleFinish,
+      isFirstModal: props.isFirstModal,
+      isLastModal: props.isLastModal
     }
   }
   
@@ -15,13 +20,33 @@ class PopUpModal extends React.Component {
       <div className="popup-shadow">
         <div className="popup-container">
           <div className="title">
-            <h4>Current Rate</h4>
+            <h4>{this.state.title}</h4>
           </div>
           <div className="menu-options">
             <h4>MENUOPTIONS</h4>
           </div>
           <div className="buttons">
-            <button>Button 1</button><button>Button 2</button>
+            { 
+              !this.state.isFirstModal &&
+              <button onClick={this.state.handleBack}>
+                Back
+              </button>
+            }
+
+            { 
+              !this.state.isLastModal &&
+              <button onClick={this.state.handleForward}>
+                Forward
+              </button>
+            }
+
+            { 
+              this.state.isLastModal &&
+              <button onClick={this.state.handleFinish}>
+                Finish
+              </button>
+            }
+
           </div>
         </div>
       </div>
