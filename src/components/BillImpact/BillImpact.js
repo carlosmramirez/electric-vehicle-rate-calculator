@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-
-import * as rateCalc from './../api/Calculations.js';
-import { getTimeAndLoadProfile, readFile } from './../util/processData.js';
-import csvTxt from '../util/loadProfileData.txt';
+import * as rateCalc from '../../api/Calculations.js'
+import { getTimeAndLoadProfile, readFile } from '../../util/processData.js';
+import csvTxt from '../../util/loadProfileData.txt';
 
 class TestComponent extends React.Component {
   constructor(props) {
