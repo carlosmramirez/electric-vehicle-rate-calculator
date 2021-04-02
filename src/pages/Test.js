@@ -12,9 +12,6 @@ class Test extends React.Component{
   render(){
     return(
       <div>
-          {/* <BillImpact title />
-          <BillImpact title />
-          <UserInput stepNumber title/> */}
           <TestComponent />
       </div>
     )
