@@ -8,6 +8,11 @@ import RateDisplay from '../RateDisplay/RateDisplay.js';
 import { roundCurrency } from '../../util/currency.js';
 
 import './assets/BillImpact.css';
+import { RATE_A, RATE_B } from '../../util/constants.js';
+
+const changeInputCopy = "Change Input";
+const bestRateCopy = "WOW! Looks you already have the best rate!";
+const billImpactHeaderCopy = "Your personalized EV rate plans:";
 
 class BillImpact extends React.Component {
   constructor(props) {
@@ -29,6 +34,7 @@ class BillImpact extends React.Component {
   }
   
   render() {
+
     const rateABeforeEv = this.state.csvRaw 
     ? rateCalc.getRateABeforeEv(getTimeAndLoadProfile(this.state.csvRaw)) : 0;
     const rateAAfterEv = this.state.csvRaw
@@ -50,14 +56,12 @@ class BillImpact extends React.Component {
           <div className="bill-impact-layout">
             <div className="header-title">
               <div className="border"></div> 
-              <h2>Your personalized EV rate plans:</h2>
+              <h2>{billImpactHeaderCopy}</h2>
             </div>
             <div className="change-rate-message">
               {
                 switchSavings < 1 &&
-                <h3>
-                  WOW! Looks you already have the best rate!
-                </h3>
+                <h3>{bestRateCopy}</h3>
               }
               {
                 switchSavings > 0 &&
@@ -69,13 +73,13 @@ class BillImpact extends React.Component {
             </div>
             <div className="content-container">
               <RateDisplay
-                title="Rate A"
+                title={RATE_A}
                 billImpact={rateABillImpact.toFixed(2)}
                 isCurrentRate={this.props.isCurrentRateA}
                 beforeEv={roundCurrency(rateABeforeEv)}
                 afterEv={roundCurrency(rateAAfterEv)} />
               <RateDisplay
-                title="Rate B"
+                title={RATE_B}
                 billImpact={rateBBillImpact.toFixed(2)}
                 isCurrentRate={!this.props.isCurrentRateA}
                 beforeEv={roundCurrency(rateBBeforeEv)}
@@ -84,7 +88,7 @@ class BillImpact extends React.Component {
             <button 
               className="change-input" 
               onClick={this.props.handleBack}>
-                Change Input
+                {changeInputCopy}
             </button>
           </div>
         }

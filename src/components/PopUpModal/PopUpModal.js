@@ -3,6 +3,10 @@ import MenuOptions from '../MenuOptions/MenuOptions';
 
 import './assets/PopUpModal.css';
 
+const backCopy = "back";
+const forwardCopy = "forward";
+const finishCopy = "finish";
+
 class PopUpModal extends React.Component {
   constructor(props) {
     super(props);
@@ -30,34 +34,30 @@ class PopUpModal extends React.Component {
               <button 
                 className="back-button"
                 onClick={this.props.handleBack}>
-                Back
+                {backCopy}
               </button>
             }
-
             { 
               !this.props.isLastModal &&
               <button
                 className="forward-button"
                 onClick={this.props.handleForward}>
-                Forward
+                {forwardCopy}
               </button>
             }
-
             { 
               this.props.isLastModal &&
               <button 
                 className="forward-button"
                 onClick={this.props.handleFinish}>
-                Finish
+                {finishCopy}
               </button>
             }
-
           </div>
         </div>
       </div>
     )
   }
 }
-
 
 export default PopUpModal;

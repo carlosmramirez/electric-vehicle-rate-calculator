@@ -1,6 +1,3 @@
-// TODO: Make sure all calculations are correct
-
-// describe the parameters
 const rateAInDollarsPerKwh = 0.15; 
 const loadProfileEvPerMile = 0.3;
 const rateBFlatInDollarsPerKwh = 0.08;

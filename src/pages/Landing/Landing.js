@@ -114,12 +114,9 @@ class Landing extends React.Component{
             mileage={this.state.mileage}
             isTouPeriod={this.state.isTouPeriod} />
         }
-
-
       </div>
     )
   }
 }
-
 
 export default Landing;
