@@ -14,12 +14,19 @@ class BillImpact extends React.Component {
       switchRates: true,
       handleBack: props.handleBack
     }
+    this.getSwitchSavings = this.getSwitchSavings.bind(this);
   }
   
   componentDidMount() {
     readFile(csvTxt).then(data => this.setState({ csvRaw: data }))
   }
 
+  getSwitchSavings(rateAAfterEv, rateBAfterEv) {
+    return this.props.isCurrentRateA 
+    ? rateAAfterEv - rateBAfterEv  
+    : rateBAfterEv - rateAAfterEv;   
+  }
+ 
   render() {
     const rateABeforeEv = this.state.csvRaw 
     ? rateCalc.getRateABeforeEv(getTimeAndLoadProfile(this.state.csvRaw)) : 0;
@@ -33,9 +40,7 @@ class BillImpact extends React.Component {
     ? rateCalc.getRateBAfterEv(getTimeAndLoadProfile(this.state.csvRaw), this.props.mileage, this.props.isTouPeriod) : 0;
     const rateBBillImpact = Math.ceil(100 * rateBAfterEv)/100 - Math.ceil(100 * rateBBeforeEv)/100;
 
-    const yearlySavings = Math.ceil(100 * (this.state.switchRates 
-      ? (rateBAfterEv - rateAAfterEv) 
-      : (rateAAfterEv - rateBAfterEv)))/100;
+    const switchSavings = this.getSwitchSavings(rateAAfterEv, rateBAfterEv);
 
     return (
       <>
@@ -48,16 +53,16 @@ class BillImpact extends React.Component {
             </div>
             <div className="change-rate-message">
               {
-                !this.state.switchRates &&
+                switchSavings < 1 &&
                 <h3>
                   WOW! Looks you already have the best rate!
                 </h3>
               }
               {
-                this.state.switchRates &&
+                switchSavings > 0 &&
                 <h3>
-                  After owning an EV, you can save <span>${yearlySavings.toFixed(2)} </span> 
-                  per year by switching to Rate {this.state.switchRates ? 'B' : 'A'}!
+                  After owning an EV, you can save <span>${switchSavings.toFixed(2)} </span> 
+                  per year by switching to Rate {this.props.isCurrentRateA ? 'B' : 'A'}!
                 </h3>
               }
             </div>

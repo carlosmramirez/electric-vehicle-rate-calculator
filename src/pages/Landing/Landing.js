@@ -34,38 +34,29 @@ class Landing extends React.Component{
 
   handleFinish() {
     this.setState({ modalNum: 4 })
-    console.log("isRateA:" + this.state.isCurrentRateA)
-    console.log("isTOU:" + this.state.isTouPeriod)
   }
-
+  
   handleRateClick(e) {
-    if (e.target.outerText.includes("Rate A")) {
-      this.setState({ isCurrentRateA: true});
-    } else {
-      this.setState({ isCurrentRateA: false});
-    }
-    if (e.target.outerText.includes("Rate B")){
-      this.setState({ isCurrentRateA: false});
-    } else {
+    if (/Flat|Rate A/.test(e.target.outerText)) {
       this.setState({ isCurrentRateA: true});
     }
+
+    if (/TOU|Rate B/.test(e.target.outerText)) {
+      this.setState({ isCurrentRateA: false});
+    } 
   }
 
   handleChargingClick(e) {
-    if (e.target.outerText.includes("between 12pm and 6pm")) {
+    if (/between 12pm and 6pm|worst/.test(e.target.outerText)) {
       this.setState({ isTouPeriod: true });
-    } else {
-      this.setState({ isTouPeriod: false})
-    }
-    if (e.target.outerText.includes("between 6pm and 12pm")) {
+    } 
+
+    if (/between 6pm and 12pm|best/.test(e.target.outerText)) {
       this.setState({ isTouPerioud: false });
-    } else {
-      this.setState({ isTouPeriod: true})
-    }
+    } 
   }
 
   handleChange(e) {
-    console.log('here')
     this.setState({ mileage: e.target.value });
   }
 
