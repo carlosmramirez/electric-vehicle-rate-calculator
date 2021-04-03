@@ -36,21 +36,27 @@ class PopUpModal extends React.Component {
           <div className="buttons">
             { 
               !this.state.isFirstModal &&
-              <button onClick={this.state.handleBack}>
+              <button 
+                className="back-button"
+                onClick={this.state.handleBack}>
                 Back
               </button>
             }
 
             { 
               !this.state.isLastModal &&
-              <button onClick={this.state.handleForward}>
+              <button
+                className="forward-button"
+                onClick={this.state.handleForward}>
                 Forward
               </button>
             }
 
             { 
               this.state.isLastModal &&
-              <button onClick={this.state.handleFinish}>
+              <button 
+                className="forward-button"
+                onClick={this.state.handleFinish}>
                 Finish
               </button>
             }

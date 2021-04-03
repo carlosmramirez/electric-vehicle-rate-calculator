@@ -36,20 +36,21 @@
 }
 
 .input-display-buttons button {
+  outline: none;
+  position: relative;
+  top: 0;
   background-color: white;
   height: 100%;
   width: 40%;
   color: rgb(170, 170, 170);
+  border-radius: 0.25rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  transition: background-color 0.75s ease-in, top 0.05s ease-in, color 0.75s ease-in;
 }
 
-.input-display-buttons button:focus {
-  background-color: #f98925;
-  color: black;
-}
-
-.input-display-buttons button:hover {
-  background-color: #f98925;
+.input-display-buttons button:focus, .input-display-buttons button:hover {
+  top: -0.01rem;
+  background-color: #f98925 ;
   color: black;
 }
 

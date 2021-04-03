@@ -96,9 +96,11 @@ class BillImpact extends React.Component {
                 <p>${(Math.ceil(100 * rateBAfterEv)/100).toFixed(2)}/year</p>
               </div>
             </div>
-            <div className="button">
-              <button onClick={this.state.handleBack}>Change Input</button>
-            </div>
+            <button 
+              className="change-input" 
+              onClick={this.state.handleBack}>
+                Change Input
+            </button>
           </div>
         }
       </>
