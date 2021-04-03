@@ -1,7 +1,21 @@
-To test this app, visit the following link: http://Frequency_test.surge.sh/
+To test this app, visit the following link: http://zappy-caluclator-by-carlos.surge.sh/
+
+# Carlos' ZappyRide EV Calculator - Engineering Perspective
+I decided to break the architecture down into components, pages, util, and api. 
+
+## Components
+The directory contains reusable components that can be used throughout pages, accounting for potential scalability.
+
+## Pages
+This directory contains the actual views a user will be observing. 
+
+## Util
+This directory contains utilites for reading the csv, currency calculations (rounding), and constants.
+
+## API
+I started with the api directory, which is responsible for calculations. I created the api directory to replicate the typical relationship between frontend and backend, assuming the backend handles all calculations.
 
 # Getting Started with ZappyRide take home
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
