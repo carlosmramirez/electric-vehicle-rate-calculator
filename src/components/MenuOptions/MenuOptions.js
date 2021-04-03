@@ -10,7 +10,10 @@ class MenuOptions extends React.Component {
 
   componentDidMount() {
     if (this.props.modalNum === 1){
-      this.buttonDefault.focus()
+      this.buttonDefault.focus();
+    }
+    if (this.props.modalNum === 3) {
+      this.buttonDefault.focus();
     }
   }
   
@@ -59,12 +62,13 @@ class MenuOptions extends React.Component {
             <div className="subscript">Tip! Charging at night is most cost-effective.</div>
             <div className="input-display-buttons">
               <button 
-                ref={(input) => { this.buttonDefault = input; }}  
                 onClick={this.props.handleChargingClick}>
                 <div className="rate-name">between 12pm and 6pm</div> 
                 <div>worst</div>
               </button>
-              <button onClick={this.props.handleChargingClick}>
+              <button 
+                ref={(input) => { this.buttonDefault = input; }}  
+                onClick={this.props.handleChargingClick}>
                 <div className="rate-name">between 6pm and 12pm</div> 
                 <div>best</div>
               </button>
