@@ -1,0 +1,35 @@
+.mileage {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.user-prompt {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.input-display {
+  margin: 0 auto;
+  width: 60%;
+  padding: 1rem;
+}
+
+.subscript {
+  color: rgb(170, 170, 170);
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.mileage input {
+  width: 100%;
+}
+
+.menu-options-container {
+  width: 100%;
+}
+
+.mileage-slider-value {
+  font-size: 2rem;
+  width: fit-content;
+  margin: 3rem auto;
+}

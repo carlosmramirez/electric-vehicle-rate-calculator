@@ -36,6 +36,10 @@
   width: 35%;
 }
 
+.subscript {
+  color: rgb(170, 170, 170);;
+}
+
 .button {
   margin-top: 1.1rem;
 }
