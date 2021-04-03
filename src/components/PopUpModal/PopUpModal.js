@@ -13,13 +13,8 @@ class PopUpModal extends React.Component {
       handleFinish: props.handleFinish,
       isFirstModal: props.isFirstModal,
       isLastModal: props.isLastModal,
-      mileage: 0
+      mileage: props.mileage,
     }
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ mileage: event.target.value });
   }
   
   render() {
@@ -31,8 +26,12 @@ class PopUpModal extends React.Component {
           </div>
           <div className="menu-options">
             <MenuOptions 
-              handleChange={this.handleChange} 
-              mileage={this.state.mileage} />
+              handleRateClick={this.props.handleRateClick}
+              handleChargingClick={this.props.handleChargingClick}
+              handleChange={this.props.handleChange}
+              isCurrentRateA={this.props.isCurrentRateA}
+              mileage={this.props.mileage}
+              modalNum={this.props.modalNum} />
           </div>
           <div className="buttons">
             { 

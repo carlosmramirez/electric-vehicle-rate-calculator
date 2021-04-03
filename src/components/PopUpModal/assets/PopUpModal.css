@@ -21,6 +21,11 @@
   padding: 1rem;
 }
 
+.title h4 {
+  margin-top: 0;
+  text-decoration: underline;
+}
+
 .menu-options {
   display: flex;
   justify-content: center;

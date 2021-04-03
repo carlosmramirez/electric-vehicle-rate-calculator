@@ -12,7 +12,6 @@ class BillImpact extends React.Component {
     this.state = {
       csvRaw: null,
       switchRates: true,
-      isCurrentRateA: true,
       handleBack: props.handleBack
     }
   }
@@ -25,13 +24,13 @@ class BillImpact extends React.Component {
     const rateABeforeEv = this.state.csvRaw 
     ? rateCalc.getRateABeforeEv(getTimeAndLoadProfile(this.state.csvRaw)) : 0;
     const rateAAfterEv = this.state.csvRaw
-    ? rateCalc.getRateAAfterEv(getTimeAndLoadProfile(this.state.csvRaw), 153980) : 0;
+    ? rateCalc.getRateAAfterEv(getTimeAndLoadProfile(this.state.csvRaw), this.props.mileage) : 0;
     const rateABillImpact = Math.ceil(100*rateAAfterEv)/100 - Math.ceil(100* rateABeforeEv)/100;
 
     const rateBBeforeEv = this.state.csvRaw
     ? rateCalc.getRateBBeforeEv(getTimeAndLoadProfile(this.state.csvRaw)) : 0;
     const rateBAfterEv = this.state.csvRaw
-    ? rateCalc.getRateBAfterEv(getTimeAndLoadProfile(this.state.csvRaw), 153980, true) : 0;
+    ? rateCalc.getRateBAfterEv(getTimeAndLoadProfile(this.state.csvRaw), this.props.mileage, this.props.isTouPeriod) : 0;
     const rateBBillImpact = Math.ceil(100 * rateBAfterEv)/100 - Math.ceil(100 * rateBBeforeEv)/100;
 
     const yearlySavings = Math.ceil(100 * (this.state.switchRates 
@@ -66,7 +65,7 @@ class BillImpact extends React.Component {
               <div className="rate-container">
                 <h2>Rate A </h2>
                 <div className="subscript">
-                   {this.state.isCurrentRateA ? "(current rate)" : "(alternate rate)" }
+                   {this.props.isCurrentRateA ? "(current rate)" : "(alternate rate)" }
                 </div>
                 <h4>Bill Impact of Owning an EV</h4>
                 <p>${rateABillImpact.toFixed(2)}/year</p>
@@ -80,7 +79,7 @@ class BillImpact extends React.Component {
               <div className="rate-container">
                 <h2>Rate B</h2>
                 <div className="subscript">
-                   {!this.state.isCurrentRateA ? "(current rate)" : "(alternate rate)" }
+                   {!this.props.isCurrentRateA ? "(current rate)" : "(alternate rate)" }
                 </div>
                 <h4>Bill Impact of Owning an EV</h4>
                 <p>${rateBBillImpact.toFixed(2)}/year</p>
