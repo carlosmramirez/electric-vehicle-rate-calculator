@@ -6,15 +6,6 @@ import './assets/PopUpModal.css';
 class PopUpModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: props.title,
-      handleBack: props.handleBack,
-      handleForward: props.handleForward,
-      handleFinish: props.handleFinish,
-      isFirstModal: props.isFirstModal,
-      isLastModal: props.isLastModal,
-      mileage: props.mileage,
-    }
   }
   
   render() {
@@ -22,7 +13,7 @@ class PopUpModal extends React.Component {
       <div className="popup-shadow">
         <div className="popup-container">
           <div className="title">
-            <h4>{this.state.title}</h4>
+            <h4>{this.props.title}</h4>
           </div>
           <div className="menu-options">
             <MenuOptions 
@@ -35,28 +26,28 @@ class PopUpModal extends React.Component {
           </div>
           <div className="buttons">
             { 
-              !this.state.isFirstModal &&
+              !this.props.isFirstModal &&
               <button 
                 className="back-button"
-                onClick={this.state.handleBack}>
+                onClick={this.props.handleBack}>
                 Back
               </button>
             }
 
             { 
-              !this.state.isLastModal &&
+              !this.props.isLastModal &&
               <button
                 className="forward-button"
-                onClick={this.state.handleForward}>
+                onClick={this.props.handleForward}>
                 Forward
               </button>
             }
 
             { 
-              this.state.isLastModal &&
+              this.props.isLastModal &&
               <button 
                 className="forward-button"
-                onClick={this.state.handleFinish}>
+                onClick={this.props.handleFinish}>
                 Finish
               </button>
             }

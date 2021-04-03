@@ -5,7 +5,6 @@ import './assets/RateDisplay.css';
 class RateDisplay extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
   }
 
 

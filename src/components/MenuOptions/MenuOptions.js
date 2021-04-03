@@ -5,7 +5,6 @@ import './assets/MenuOptions.css';
 class MenuOptions extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
   }
 
   componentDidMount() {
