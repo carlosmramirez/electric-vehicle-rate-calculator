@@ -4,6 +4,9 @@ import * as rateCalc from '../../api/Calculations.js'
 import { getTimeAndLoadProfile, readFile } from '../../util/processData.js';
 import csvTxt from '../../util/loadProfileData.txt';
 
+import RateDisplay from '../RateDisplay/RateDisplay.js';
+import { roundCurrency } from '../../util/currency.js';
+
 import './assets/BillImpact.css';
 
 class BillImpact extends React.Component {
@@ -11,8 +14,6 @@ class BillImpact extends React.Component {
     super(props);
     this.state = {
       csvRaw: null,
-      switchRates: true,
-      handleBack: props.handleBack
     }
     this.getSwitchSavings = this.getSwitchSavings.bind(this);
   }
@@ -26,13 +27,13 @@ class BillImpact extends React.Component {
     ? rateAAfterEv - rateBAfterEv  
     : rateBAfterEv - rateAAfterEv;   
   }
- 
+  
   render() {
     const rateABeforeEv = this.state.csvRaw 
     ? rateCalc.getRateABeforeEv(getTimeAndLoadProfile(this.state.csvRaw)) : 0;
     const rateAAfterEv = this.state.csvRaw
     ? rateCalc.getRateAAfterEv(getTimeAndLoadProfile(this.state.csvRaw), this.props.mileage) : 0;
-    const rateABillImpact = Math.ceil(100*rateAAfterEv)/100 - Math.ceil(100* rateABeforeEv)/100;
+    const rateABillImpact = roundCurrency(rateAAfterEv) - roundCurrency(rateABeforeEv);
 
     const rateBBeforeEv = this.state.csvRaw
     ? rateCalc.getRateBBeforeEv(getTimeAndLoadProfile(this.state.csvRaw)) : 0;
@@ -67,38 +68,22 @@ class BillImpact extends React.Component {
               }
             </div>
             <div className="content-container">
-              <div className="rate-container">
-                <h2>Rate A </h2>
-                <div className="subscript">
-                   {this.props.isCurrentRateA ? "(current rate)" : "(alternate rate)" }
-                </div>
-                <h4>Bill Impact of Owning an EV</h4>
-                <p>${rateABillImpact.toFixed(2)}/year</p>
-
-                <h4>Electric Bill Before EV</h4> 
-                <p>${(Math.ceil(100 * rateABeforeEv)/100).toFixed(2)}/year</p>
-
-                <h4>Electric Bill After EV</h4>
-                <p>${(Math.ceil(100 * rateAAfterEv)/100).toFixed(2)}/year</p>
-              </div>
-              <div className="rate-container">
-                <h2>Rate B</h2>
-                <div className="subscript">
-                   {!this.props.isCurrentRateA ? "(current rate)" : "(alternate rate)" }
-                </div>
-                <h4>Bill Impact of Owning an EV</h4>
-                <p>${rateBBillImpact.toFixed(2)}/year</p>
-
-                <h4>Electric Bill Before EV</h4> 
-                <p>${(Math.ceil(100 * rateBBeforeEv)/100).toFixed(2)}/year</p>
-
-                <h4>Electric Bill After EV</h4>
-                <p>${(Math.ceil(100 * rateBAfterEv)/100).toFixed(2)}/year</p>
-              </div>
+              <RateDisplay
+                title="Rate A"
+                billImpact={rateABillImpact.toFixed(2)}
+                isCurrentRate={this.props.isCurrentRateA}
+                beforeEv={roundCurrency(rateABeforeEv)}
+                afterEv={roundCurrency(rateAAfterEv)} />
+              <RateDisplay
+                title="Rate B"
+                billImpact={rateBBillImpact.toFixed(2)}
+                isCurrentRate={!this.props.isCurrentRateA}
+                beforeEv={roundCurrency(rateBBeforeEv)}
+                afterEv={roundCurrency(rateBAfterEv)} />
             </div>
             <button 
               className="change-input" 
-              onClick={this.state.handleBack}>
+              onClick={this.props.handleBack}>
                 Change Input
             </button>
           </div>
