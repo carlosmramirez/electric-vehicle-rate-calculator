@@ -24,7 +24,6 @@ class RateDisplay extends React.Component {
         <h4>Electric Bill After EV</h4>
         <p>${this.props.afterEv}/year</p>
       </div>
-
     )
   }
 }
