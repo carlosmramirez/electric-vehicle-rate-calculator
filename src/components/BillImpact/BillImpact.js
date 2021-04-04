@@ -11,7 +11,7 @@ import './assets/BillImpact.css';
 import { RATE_A, RATE_B } from '../../util/constants.js';
 
 const changeInputCopy = "Change Input";
-const bestRateCopy = "WOW! Looks you already have the best rate!";
+const bestRateCopy = "WOW! Looks like you already have the best rate!";
 const billImpactHeaderCopy = "Your personalized EV rate plans:";
 
 class BillImpact extends React.Component {
