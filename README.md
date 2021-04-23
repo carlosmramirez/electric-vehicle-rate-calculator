@@ -1,6 +1,6 @@
 To test this app, visit the following link: http://ev-calculator-by-carlos.surge.sh/
 
-# Carlos' ZappyRide EV Calculator - Engineering Perspective
+# Carlos' EV Calculator - Engineering Perspective
 I decided to break the architecture down into components, pages, util, and api. 
 
 ## Components
@@ -15,7 +15,7 @@ This directory contains utilites for reading the csv, currency calculations (rou
 ## API
 I started with the api directory, which is responsible for calculations. I created the api directory to replicate the typical relationship between frontend and backend, assuming the backend handles all calculations.
 
-# Getting Started with ZappyRide take home
+# Getting Started 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
