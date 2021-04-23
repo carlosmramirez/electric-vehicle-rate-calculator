@@ -1,4 +1,4 @@
-To test this app, visit the following link: http://zappy-caluclator-by-carlos.surge.sh/
+To test this app, visit the following link: http://ev-calculator-by-carlos.surge.sh/
 
 # Carlos' ZappyRide EV Calculator - Engineering Perspective
 I decided to break the architecture down into components, pages, util, and api. 
